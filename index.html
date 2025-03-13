@@ -1,1 +1,90 @@
-Hello World
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+	<head>
+		<title>grimtomic</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&amp;display=swap" rel="stylesheet">
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<div class="container" style="text-align: center">
+			<header id="header">
+				<h1 style="text-align: center">About Me</h1>
+				<p style="text-align:center;"> Temp<br />
+				temp</p>
+				<h1 style="text-align: center">My Socials</h1>
+				<div class="parent" style="text-align: center">
+					<div class="child inline-block-child">
+						<a href="http://discordapp.com/users/570946750769135618">Discord</a>
+					</div>
+					<div class="child inline-block-child">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
+						</ul>
+					</div>
+
+					<div class="inline-block-child">
+						<div class="child inline-block-child">
+							<a href="https://steamcommunity.com/profiles/76561198811011412/">&nbsp;&nbsp;&nbsp;Steam</a>
+						</div>
+					</div>
+					<div class="child inline-block-child">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-steam"><span class="label"Steam</span></a></li>
+						</ul>
+				</div>
+					<p id="weather"></p>
+			</header>
+		</div>
+		<!-- Scripts -->
+			<script src="assets/js/main.js"></script>
+			<script>
+
+				function getWeatherIcon(code) {
+					const icons = {
+						0: "☀️", // Clear sky
+						1: "🌤", // Mainly clear
+						2: "⛅", // Partly cloudy
+						3: "☁️", // Overcast
+						45: "🌫", // Fog
+						48: "🌫", // Depositing rime fog
+						51: "🌦", // Light drizzle
+						53: "🌧", // Moderate drizzle
+						55: "🌧", // Dense drizzle
+						61: "🌧", // Slight rain
+						63: "🌧", // Moderate rain
+						65: "🌧", // Heavy rain
+						71: "❄️", // Slight snow
+						73: "❄️", // Moderate snow
+						75: "❄️", // Heavy snow
+						95: "⛈", // Thunderstorm
+						96: "⛈", // Thunderstorm with slight hail
+						99: "⛈", // Thunderstorm with heavy hail
+					};
+					return icons[code] || "❓"; // Default unknown
+				}
+
+				fetch('https://ipinfo.io/json')
+						.then(response => response.json())
+						.then(data => {
+							let [lat, lon] = data.loc.split(',');
+							return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+						})
+						.then(response => response.json())
+						.then(data => {
+							let temp = data.current_weather.temperature;
+							let weatherCode = data.current_weather.weathercode;
+							let weatherIcon = getWeatherIcon(weatherCode);
+							document.getElementById('weather').innerText = `Weather: ${weatherIcon} ${temp}°C`;
+						})
+						.catch(error => {
+							document.getElementById('weather').innerText = "Could not fetch weather, though its probably raining";
+						});
+
+			</script>
+
+	</body>
+</html>
