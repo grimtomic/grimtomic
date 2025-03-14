@@ -8,9 +8,16 @@
 		<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&amp;display=swap" rel="stylesheet">
 		<link rel="icon" href="https://openclipart.org/image/800px/344819" type="image/png">
 	</head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-58G65X2X51"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
+		gtag('config', 'G-58G65X2X51');
+	</script>
 	<body class="is-preload" style="background: var(--base)">
-
 		<!-- Header -->
 		<div class="container" style="text-align: center">
 			<header id="header">
@@ -26,7 +33,7 @@
 				<h4 id="weather"> </h4>
 				<div class="parent" style="text-align: center">
 					<div class="child inline-block-child">
-						<a href="http://discordapp.com/users/570946750769135618">Discord</a>
+						<a href="https://discordapp.com/users/570946750769135618">Discord</a>
 					</div>
 					<div class="child inline-block-child">
 						<ul class="icons">
@@ -41,11 +48,9 @@
 					</div>
 					<div class="child inline-block-child">
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-steam"><span class="label"Steam></span></a></li>
+							<li><a href="#" class="icon brands fa-steam"><span class="label">Steam></span></a></li>
 						</ul>
 					</div>
-					<p id="weather"></p>
-					<p id="time"></p>
 				</div>
 			</header>
 		</div>
@@ -53,7 +58,6 @@
 		<!-- Scripts -->
 			<script src="assets/js/main.js"></script>
 			<script>
-
 				function getWeatherIcon(code) {
 					const icons = {
 						0: "☀️", // Clear sky
@@ -77,7 +81,6 @@
 					};
 					return icons[code] || "❓"; // Default unknown
 				}
-
 				fetch('https://ipinfo.io/json')
 						.then(response => response.json())
 						.then(data => {
@@ -94,12 +97,9 @@
 						.catch(error => {
 							document.getElementById('weather').innerText = "Could not fetch weather, though its probably raining";
 						});
-
 			</script>
 			<script>
 				var timeDisplay = document.getElementById("time");
-
-
 				function refreshTime() {
 					var dateString = new Date().toLocaleString("en-GB", {
 						timeZone: "Europe/London",
@@ -112,5 +112,4 @@
 
 				setInterval(refreshTime, 1000);
 			</script>
-
 </html>
