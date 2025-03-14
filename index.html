@@ -6,16 +6,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&amp;display=swap" rel="stylesheet">
+		<link rel="icon" href="https://openclipart.org/image/800px/344819" type="image/png">
 	</head>
-	<body class="is-preload">
+
+	<body class="is-preload" style="background: var(--base)">
 
 		<!-- Header -->
 		<div class="container" style="text-align: center">
 			<header id="header">
-				<h1 style="text-align: center">About Me</h1>
-				<p style="text-align:center;"> Temp<br />
-				temp</p>
-				<h1 style="text-align: center">My Socials</h1>
+				<h2 style="text-align: center">About Me</h2>
+				<div class="image-container">
+					<img src="https://cdn.discordapp.com/guilds/1015060230222131221/users/570946750769135618/avatars/9b6b1bc0d5f80e47e823d55e24c52d24.webp?size=128" alt=" " class="avatar__44b0c" aria-hidden="true">
+				</div>
+				<p style="text-align:center;"> Hai! im <b>ash</b> (aka: grimtomic, ashley)<br/>
+				Pronouns: <b>She/They</b> <br> I enjoy: games (currently modded mc, val and gta), <br> linux <b>(arch btw)</b>, and computers (<b>3</b> burnt PSU's to date)<br> Personality: INTP-A, <b> pan</b><br/>
+				</p>
+
+				<h4 id="time"></h4>
+				<h4 id="weather"> </h4>
 				<div class="parent" style="text-align: center">
 					<div class="child inline-block-child">
 						<a href="http://discordapp.com/users/570946750769135618">Discord</a>
@@ -33,12 +41,15 @@
 					</div>
 					<div class="child inline-block-child">
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-steam"><span class="label"Steam</span></a></li>
+							<li><a href="#" class="icon brands fa-steam"><span class="label"Steam></span></a></li>
 						</ul>
-				</div>
+					</div>
 					<p id="weather"></p>
+					<p id="time"></p>
+				</div>
 			</header>
 		</div>
+	</body>
 		<!-- Scripts -->
 			<script src="assets/js/main.js"></script>
 			<script>
@@ -71,7 +82,7 @@
 						.then(response => response.json())
 						.then(data => {
 							let [lat, lon] = data.loc.split(',');
-							return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+							return fetch(`https://api.open-meteo.com/v1/forecast?latitude=51.5085&longitude=-0.1257&current_weather=true`);
 						})
 						.then(response => response.json())
 						.then(data => {
@@ -85,6 +96,21 @@
 						});
 
 			</script>
+			<script>
+				var timeDisplay = document.getElementById("time");
 
-	</body>
+
+				function refreshTime() {
+					var dateString = new Date().toLocaleString("en-GB", {
+						timeZone: "Europe/London",
+						dataStyle: "full",
+						timeStyle: "full",
+					});
+					var formattedString = dateString.replace(", ", " - ");
+					timeDisplay.innerHTML = formattedString;
+				}
+
+				setInterval(refreshTime, 1000);
+			</script>
+
 </html>
