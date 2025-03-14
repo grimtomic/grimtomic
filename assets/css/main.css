@@ -898,7 +898,7 @@ button:disabled,
   gap:20px 70px;
 }
 .container {
-  background: rgb(49, 50, 69, 0.2);
+  background: rgb(49, 50, 69, 0.4);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
