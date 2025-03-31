@@ -104,12 +104,11 @@
 					var dateString = new Date().toLocaleString("en-GB", {
 						timeZone: "Europe/London",
 						dataStyle: "full",
-						timeStyle: "full",
+						timeStyle: "long",
 					});
 					var formattedString = dateString.replace(", ", " - ");
 					timeDisplay.innerHTML = formattedString;
 				}
-
 				setInterval(refreshTime, 1000);
 			</script>
 </html>
