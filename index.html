@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html xmlns:align-items="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ashley</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assests/css/main.css" />
+        <link rel="icon" href="https://openclipart.org/image/800px/344819" type="image/png">
+    </head>
+    <body>
+        <main>
+            <div class="layout">
+                <div style="margin-top: 35px; display: flex; align-items: center">
+                    <div class="col-md-4">
+                        <div class="image-container" style="align-items: center">
+                            <img src="https://cdn.pronouns.cc/users/cvsl78nm985vdppbqfvg/8bbb36756c1434eab977ee29a7fcc08933306568d61b9be4406e3da406272cc0.webp" alt=" " class="avatar__44b0c" aria-hidden="true">
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div>
+                            <p class="name">Hai! im <b>ashley</b></p>
+                            <p class="pronouns">she/they ∙ lonely trans girl</p>
+                        </div>
+                        <hr class="seperator">
+                        <div style="margin-bottom: 10px; display: flex;" class="gap">
+                            <div style="display: flex; align-items: center;">
+                                <span>United Kingdom, London</span>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <span id="weather"></span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px">
+                                <span id="pst-time" style="margin-left: 9px"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>About Me</h2>
+                    <div class="container" style="text-align: left">
+                        <h4>
+                            As you might have gathered my name is Ashley,
+                            <br>
+                            slowly learning to code, you can see my attempts at a front end here.
+                            <br>
+                            I play games in my spare time, currently playing ∙ Celeste - Hollow Knight - Minecraft
+                            <br>
+                            see my pronouns.cc <a href="https://pronouns.cc/@ashleigh">here</a>
+                        </h4>
+                        <p>
+                           This the second itteration of this website
+                        </p>
+                        <h4>
+                            Profile pic made by @.watori on discord
+                        </h4>
+                    </div>
+                </div>
+
+                <hr class="seperator">
+                <div style="display: flex; align-items: flex-end">
+                    <div class="col-md-4" style="margin-right: 200px">
+                        <a href="https://www.last.fm/user/grimtomic"><img src="https://lastfm-recently-played.vercel.app/api?user=grimtomic&count=3&bg_color=88b2cc" height="auto" width="350px"/></a>
+
+                    </div>
+                    <div class="col-md" style="text-align: center; align-self: center">
+                        <h4>Vistor Count</h4>
+                        <img src="https://count.getloli.com/@grimtomic?name=grimtomic&theme=asoul&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto" alt="name"/>
+                    </div>
+
+                </div>
+                <hr class="seperator">
+                <footer>
+                    © 2025, Ashley
+                    <br>
+                    Made with <a>❤</a> by Ashley
+                    <br>
+                    Site licensed under <a href="https://github.com/grimtomic/grimtomic?tab=Apache-2.0-1-ov-file">Apache-2.0</a> ∙ <a href="https://github.com/grimtomic/grimtomic">Source</a>
+                </footer>
+            </div>
+        </main>
+    </body>
+    <script>
+            function e() {
+                var t = new Date,
+                    i = t.toLocaleString("en-US", {
+                        timeZone: "Europe/London",
+                        hour12: !1,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit"
+                    });
+                document.getElementById("pst-time").textContent = "BST · " + i
+            }
+            setInterval(e, 500);
+            e();
+        </script>
+    <script>
+            function getWeatherIcon(code) {
+                const icons = {
+                    0: "☀️", // Clear sky
+                    1: "🌤", // Mainly clear
+                    2: "⛅", // Partly cloudy
+                    3: "☁️", // Overcast
+                    45: "🌫", // Fog
+                    48: "🌫", // Depositing rime fog
+                    51: "🌦", // Light drizzle
+                    53: "🌧", // Moderate drizzle
+                    55: "🌧", // Dense drizzle
+                    61: "🌧", // Slight rain
+                    63: "🌧", // Moderate rain
+                    65: "🌧", // Heavy rain
+                    71: "❄️", // Slight snow
+                    73: "❄️", // Moderate snow
+                    75: "❄️", // Heavy snow
+                    95: "⛈", // Thunderstorm
+                    96: "⛈", // Thunderstorm with slight hail
+                    99: "⛈", // Thunderstorm with heavy hail
+                };
+                return icons[code] || "❓"; // Default unknown
+            }
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    let [lat, lon] = data.loc.split(',');
+                    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=51.5085&longitude=-0.1257&current_weather=true`);
+                })
+                .then(response => response.json())
+                .then(data => {
+                    let temp = data.current_weather.temperature;
+                    let weatherCode = data.current_weather.weathercode;
+                    let weatherIcon = getWeatherIcon(weatherCode);
+                    document.getElementById('weather').innerText = `Weather: ${weatherIcon} ${temp}°C`;
+                })
+                .catch(error => {
+                    document.getElementById('weather').innerText = "Could not fetch weather, though its probably raining";
+                });
+        </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-58G65X2X51"></script>
+    <script> //secondary vistor count (private)
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-58G65X2X51');
+    </script>
+</html>
