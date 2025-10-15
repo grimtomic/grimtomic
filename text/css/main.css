@@ -71,6 +71,7 @@ c {
   flex-direction: column;
   gap: 0.8rem;
   min-width: 65%;
+  width: 100%
 }
 
 
