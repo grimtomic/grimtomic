@@ -103,8 +103,11 @@ c {
   border: none;
   margin-top: 0.2rem;
   font-size: 0.8rem;
-  overflow: hidden;
   min-height: 4ch;
+  backdrop-filter: blur(2000px);
+  display: flex;
+  background-color: var(--site-background-colour);
+  height: 20px;
 }
 #pfp {
     height: auto;
@@ -124,6 +127,11 @@ c {
 #counter {
   display: none;
 }
+#mobile-only {
+  display: none;
+  height: auto;
+  padding: 0.5rem;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -131,6 +139,15 @@ c {
   position: relative;
   padding-top: 0.2rem;
   height: auto;
+}
+.right-container {
+  display: flex;
+  flex-direction: column;
+  border: 0.1px solid var(--site-general-text-colour);
+  position: relative;
+  padding-top: 0.2rem;
+  height: 48%;
+  max-height: fit-content;
 }
 
 .image-container img{
@@ -162,7 +179,7 @@ c {
   gap: .2rem;
   width: 99%;
   padding: .2rem;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   height: 99%;
 }
@@ -182,6 +199,11 @@ c {
   height: 0.5ch;
   top: -1ch;
   left: -2px;
+}
+.scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 
@@ -206,7 +228,7 @@ c {
   body {
     height: 100%;
     padding: 2vw;
-    overflow-y: scroll !important;
+    overflow-y: hidden;
     overflow-x: hidden;
     font-size: 0.7em;
   }
@@ -235,10 +257,14 @@ c {
   }
   #left-counter {
   display: none;
+  }
+  #mobile-only {
+  display: inherit;
 }
 }
 @media screen and (max-width: 1300px) {
   #right-section {
     display: none;
   }
+
 }
