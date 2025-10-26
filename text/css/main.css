@@ -161,7 +161,7 @@ c {
   position: relative;
   padding-top: 0.2rem;
   height: 48%;
-  max-height: fit-content;
+  max-height: 450px;
 }
 
 .image-container img{
