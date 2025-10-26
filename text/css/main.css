@@ -63,6 +63,9 @@ c {
   height: 93%;
   gap: 0.4rem;
   justify-content: flex-start;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #section-container {
@@ -132,7 +135,18 @@ c {
   height: auto;
   padding: 0.5rem;
 }
+#neko-gen {
+  display: inherit;
+}
 .container {
+  display: flex;
+  flex-direction: column;
+  border: 0.1px solid var(--site-general-text-colour);
+  position: relative;
+  padding-top: 0.2rem;
+  height: auto;
+}
+.middle-container {
   display: flex;
   flex-direction: column;
   border: 0.1px solid var(--site-general-text-colour);
@@ -268,3 +282,16 @@ c {
   }
 
 }
+@media screen and (max-height: 930px) {
+  body {
+    height: 100%;
+    padding: 2vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 0.7em;
+  }
+  #neko-gen {
+    display: none;
+  }
+}
+  
